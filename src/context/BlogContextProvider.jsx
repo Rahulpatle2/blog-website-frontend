@@ -27,7 +27,7 @@ const BlogContextProvider = ({children}) => {
       }
       fetchBlogs()
    
-  }, []);
+  }, [data,setData]);
   return (
     <BlogContext.Provider value={{toggler,setToggler,data,setData}}>
         {children}
