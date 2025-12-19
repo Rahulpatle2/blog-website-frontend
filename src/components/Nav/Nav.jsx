@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link,NavLink } from 'react-router-dom' 
 import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
     const navigate = useNavigate();
+    const [toggle,setToggle] = useState(false);
   return (
     <nav className='flex flex-col items-center'>
         <div className='lg:flex lg:py-3 justify-between items-center lg:w-[90%]'>
@@ -16,15 +17,23 @@ const Nav = () => {
             
         </div>
         <div className='h-px my-2 w-full bg-gray-500'></div>
-        <select
+        {/* <select
       className="lg:hidden border my-5 w-[90%] rounded px-2 h-10 shadow-[inset_3px_3px_6px_0px_rgb(204,219,232),inset_-3px_-3px_6px_1px_rgba(255,255,255,0.5)]"
       onChange={(e) => navigate(e.target.value)}
     >
       <option value="/newest">Newest</option>
       <option value="/contact">Contact</option>
       <option value="/createBlog">CreateBlog</option>
-    </select>
-
+    </select> */}
+        <div className=' lg:hidden w-full flex flex-col items-center'>
+            <div onClick={() => setToggle(!toggle)} className='shadow-md w-[90%] relative py-2 px-2 rounded-lg '>Menu <span className='absolute right-2'>{toggle ? (<i class="fa-solid fa-angle-down"></i>):(<i class="fa-solid fa-angle-right"></i>)}</span></div>
+           
+            <div className={`flex flex-col shadow-lg w-[90%] mt-2 gap-2 px-2 py-2 top-25 bg-gray-100 ${toggle ? 'absolute':'hidden'}`}>
+                <NavLink  to={'/'} className={({isActive}) => isActive ? 'bg-blue-500 text-white px-1':""}>Newest</NavLink>
+                <NavLink to={'/contact'} className={({isActive}) => isActive ? 'bg-blue-500 text-white px-1':""} >Contact us</NavLink>
+                <NavLink to={'/createBlog'} className={({isActive}) => isActive ? 'bg-blue-500 text-white px-1':""} >Create Blog</NavLink>
+            </div>
+        </div>
         <ul className='hidden lg:flex w-[90%] gap-6'>
             <li className='text-[#1E293B]'>
                 <NavLink className={({isActive}) => isActive?"text-[#2563eb]":""} to={'/newest'}>
