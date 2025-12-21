@@ -5,7 +5,7 @@ import BlogContext from '../context/blogContext'
 
 const Newest = () => {
   const {data} = useContext(BlogContext)
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className='w-full flex  justify-center min-h-[80vh]'>
