@@ -29,7 +29,7 @@ const Blog = ({data}) => {
   
   // const blog = JSON.parse(localStorage.getItem('blogs'));
   
- console.log(data.imageUrl);
+//  console.log(data.imageUrl);
   return  (
    <div className="max-w-3xl mx-auto p-4 sm:p-6 bg-white shadow-lg rounded-2xl">
 
