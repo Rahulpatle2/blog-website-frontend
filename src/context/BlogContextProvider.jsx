@@ -7,21 +7,17 @@ const BlogContextProvider = ({children}) => {
     const [data,setData] = useState([]);
     const[toggler,setToggler] = useState(true);
 
-  //   useEffect(() => {
-  //   const storedBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-  //   setData(storedBlogs);
-  // }, []);
-
-  // Save blogs whenever data changes
+  
+  
     useEffect(() => {
-    // localStorage.setItem("blogs", JSON.stringify(data));
+    
    
       const fetchBlogs = async() =>{
           try {
             const res = await instance.get('/blogs/');
-            // console.log(res.data)
+           
             setData(res.data.blogs)
-            // console.log(res.data)
+           
           } catch (error) {
             console.log('Error:',error)
           }
@@ -29,7 +25,7 @@ const BlogContextProvider = ({children}) => {
       fetchBlogs()
    
   }, []);
-  // console.log(data)
+  
   return (
     <BlogContext.Provider value={{toggler,setToggler,data,setData}}>
         {children}

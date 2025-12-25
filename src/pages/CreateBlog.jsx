@@ -26,10 +26,8 @@ const CreateBlog = () => {
           withCredentials: true,
           
         title: title,
-        // date: date,
         imageUrl: imageUrl,
         details: details,
-        // author: author
         })
 
 
@@ -63,19 +61,7 @@ const CreateBlog = () => {
         </div>
 
 
-        {/* <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Date</label>
-          <input
-            type="date"
-
-            onChange={(e) => setDate(e.target.value)}
-            value={date}
-
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] 
-    focus:outline-none focus:ring-2 focus:ring-[#2563EB]" readOnly
-          />
-        </div> */}
-
+       
 
         <div>
           <label className="block text-[#0F172A] font-semibold mb-1">Image URL</label>
@@ -102,18 +88,7 @@ const CreateBlog = () => {
         </div>
 
 
-        {/* <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Author</label>
-          <input
-            type="text"
-
-            onChange={(e) => setAuthor(e.target.value)}
-            placeholder="Author name"
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
-            focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-          />
-        </div> */}
-
+       
 
         <button
           type="submit"

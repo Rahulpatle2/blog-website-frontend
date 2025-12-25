@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import BackgroundImage from '../assets/form-background.png'
-import { useAuth } from '../context/AuthContextProvider'
-import { useFormDetail } from './custom/CustomHook';
-import instance from '../config/config';
+import { useFormDetail } from './custom/customHook.js';
+import instance from '../config/config.js';
 import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-    const { setUser,user ,token,setToken} = useAuth();
+    
     const { username, setUsername, email, setEmail, password, setPassword } = useFormDetail();
     const navigate = useNavigate()
     const LoginUser = async (e) => {

@@ -1,8 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import BlogContext from "../../context/blogContext";
-import { toast } from "react-toastify";
-import instance from "../../config/config";
+import BlogContext from "../../context/blogContext.js";
+
 
 const BlogPost = () => {
   const { id } = useParams();

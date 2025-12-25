@@ -1,29 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import BlogContext from '../../context/blogContext';
-import instance from '../../config/config';
+import BlogContext from '../../context/blogContext.js';
+import instance from '../../config/config.js';
 import { toast } from 'react-toastify';
-import { useAuth } from '../../context/AuthContextProvider';
+import { useAuth } from '../../context/AuthContextProvider.jsx';
 
 
 
 
 const Blog = ({data}) => {
-  // const {data} = useContext(BlogContext);
+ 
 
   const{user} = useAuth()
   
   const {setData} = useContext(BlogContext);
   const navigate = useNavigate();
   const[isExpended,setIsExpended] = useState(false)
-  // const blogId = data.id;
+ 
 
   const filteredBlogs = async () => {
     try {
       await instance.delete(`blogs/${data._id}`,{
-        // headers:{
-        //   'Authorization':`Bearer ${}`
-        // }
+        
          withCredentials: true,
         
       });
@@ -36,11 +34,7 @@ const Blog = ({data}) => {
     }
   };
 
-  // console.log(data.author)
-  
-  // const blog = JSON.parse(localStorage.getItem('blogs'));
-  
-//  console.log(data.imageUrl);
+ 
   return  (
    <div className="max-w-3xl mx-auto p-4 sm:p-6 bg-white shadow-lg rounded-2xl">
 

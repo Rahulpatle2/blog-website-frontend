@@ -19,14 +19,7 @@ const Nav = () => {
             
         </div>
         <div className='h-px my-2 w-full bg-gray-500'></div>
-        {/* <select
-      className="lg:hidden border my-5 w-[90%] rounded px-2 h-10 shadow-[inset_3px_3px_6px_0px_rgb(204,219,232),inset_-3px_-3px_6px_1px_rgba(255,255,255,0.5)]"
-      onChange={(e) => navigate(e.target.value)}
-    >
-      <option value="/newest">Newest</option>
-      <option value="/contact">Contact</option>
-      <option value="/createBlog">CreateBlog</option>
-    </select> */}
+       
         <div className=' lg:hidden w-full flex flex-col items-center'>
             <div onClick={() => setToggle(!toggle)} className='shadow-md w-[90%] relative py-2 px-2 rounded-lg '>Menu <span className='absolute right-2'>{toggle ? (<i className="fa-solid fa-angle-down"></i>):(<i className="fa-solid fa-angle-right"></i>)}</span></div>
            

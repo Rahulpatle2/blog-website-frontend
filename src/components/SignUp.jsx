@@ -1,36 +1,31 @@
 import React, { useState } from 'react'
 import BackgroundImage from '../assets/form-background.png'
 import { useAuth } from '../context/AuthContextProvider'
-import { useFormDetail } from './custom/CustomHook';
+import { useFormDetail } from './custom/customHook.js';
 import instance from '../config/config.js'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const SignUp = () => {
-    const { setUser } = useAuth();
     const { username, setUsername, email, setEmail, password, setPassword } = useFormDetail();
-
-    const signupUser = async (e) => {
+    const navigate = useNavigate()
+    const LoginUser = async (e) => {
         e.preventDefault();
-
         try {
-            const user = await instance.post('/users/register',
-                {
 
-                    username: username,
-                    email: email,
-                    password: password
-                }
-            )
-            console.log(user.data)
-            setUser(user.data);
+            const res = await instance.post('/users/login', {
+                username: username,
+                email: email,
+                password: password
+            });
+
+            
+            window.location.href = "/";
         } catch (error) {
-             console.error(error.response?.data || error.message);
+            console.error(error);
         }
 
-
-
     }
-
     return (
         <div className='border w-screen h-screen relative flex items-center justify-center'>
             <div className='w-full h-full object-fit absolute -z-1 overflow-hidden'>

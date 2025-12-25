@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import BlogContext from '../context/blogContext'
+import BlogContext from '../context/blogContext.js'
 import { nanoid } from 'nanoid'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom'
-import instance from '../config/config'
+import instance from '../config/config.js'
 
 const UpdateBlog = () => {
 
@@ -77,19 +77,7 @@ if(!blog){
           />
         </div>
 
-        {/* Date */}
-        {/* <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Date</label>
-  <input
-    type="date"
-    {...register("date")}
-    defaultValue={new Date().toISOString().split("T")[0]}
-    className="w-full border rounded-lg px-3 py-2 text-[#334155] 
-    focus:outline-none focus:ring-2 focus:ring-[#2563EB]" readOnly
-  />
-        </div> */}
-
-        {/* Image URL */}
+       
         <div>
           <label className="block text-[#0F172A] font-semibold mb-1">Image URL</label>
           <input
@@ -114,18 +102,7 @@ if(!blog){
           ></textarea>
         </div>
 
-        {/* Author */}
-        {/* <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Author</label>
-          <input
-            type="text"
-            {...register('author')}
-            defaultValue={blog.author}
-            placeholder="Author name"
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
-            focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
-          />
-        </div> */}
+        
 
         {/* Submit Button */}
         <button
