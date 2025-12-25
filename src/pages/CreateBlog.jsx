@@ -21,20 +21,23 @@ const CreateBlog = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await instance.post('/blogs/create-blog', {
+      const res = await instance.post('/blogs/create-blog', 
+        {
+          withCredentials: true,
+          
         title: title,
-        date: date,
+        // date: date,
         imageUrl: imageUrl,
         details: details,
-        author: author
-      })
+        // author: author
+        })
 
 
       setData((prev) => [...prev, res.data])
       toast.success()
       navigate('/newest');
     } catch (error) {
-      console.log('Error:', error)
+      console.log('Error:', error.message)
       toast.error(error);
     }
 
@@ -60,7 +63,7 @@ const CreateBlog = () => {
         </div>
 
 
-        <div>
+        {/* <div>
           <label className="block text-[#0F172A] font-semibold mb-1">Date</label>
           <input
             type="date"
@@ -71,7 +74,7 @@ const CreateBlog = () => {
             className="w-full border rounded-lg px-3 py-2 text-[#334155] 
     focus:outline-none focus:ring-2 focus:ring-[#2563EB]" readOnly
           />
-        </div>
+        </div> */}
 
 
         <div>
@@ -99,7 +102,7 @@ const CreateBlog = () => {
         </div>
 
 
-        <div>
+        {/* <div>
           <label className="block text-[#0F172A] font-semibold mb-1">Author</label>
           <input
             type="text"
@@ -109,7 +112,7 @@ const CreateBlog = () => {
             className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
             focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           />
-        </div>
+        </div> */}
 
 
         <button

@@ -25,15 +25,13 @@ const UpdateBlog = () => {
 
 const updateBlog = async (formData) => {
   try {
-    const payload = {
+
+    const res = await instance.patch(`/blogs/${id}`, {
+      withCredentials: true,
       title: formData.title,
-      date: formData.date,
       imageUrl: formData.imageURL, 
       details: formData.details,
-      author: formData.author,
-    };
-
-    const res = await instance.patch(`/blogs/${id}`, payload);
+    });
 
     setData(prev =>
       prev.map(blog =>
@@ -80,7 +78,7 @@ if(!blog){
         </div>
 
         {/* Date */}
-        <div>
+        {/* <div>
           <label className="block text-[#0F172A] font-semibold mb-1">Date</label>
   <input
     type="date"
@@ -89,7 +87,7 @@ if(!blog){
     className="w-full border rounded-lg px-3 py-2 text-[#334155] 
     focus:outline-none focus:ring-2 focus:ring-[#2563EB]" readOnly
   />
-        </div>
+        </div> */}
 
         {/* Image URL */}
         <div>
@@ -117,7 +115,7 @@ if(!blog){
         </div>
 
         {/* Author */}
-        <div>
+        {/* <div>
           <label className="block text-[#0F172A] font-semibold mb-1">Author</label>
           <input
             type="text"
@@ -127,7 +125,7 @@ if(!blog){
             className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
             focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           />
-        </div>
+        </div> */}
 
         {/* Submit Button */}
         <button

@@ -1,14 +1,17 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import BlogContext from '../../context/blogContext';
 import instance from '../../config/config';
 import { toast } from 'react-toastify';
+import { useAuth } from '../../context/AuthContextProvider';
 
 
 
 
 const Blog = ({data}) => {
   // const {data} = useContext(BlogContext);
+
+  const{user} = useAuth()
   
   const {setData} = useContext(BlogContext);
   const navigate = useNavigate();
@@ -17,7 +20,13 @@ const Blog = ({data}) => {
 
   const filteredBlogs = async () => {
     try {
-      await instance.delete(`/blogs/${data._id}`);
+      await instance.delete(`blogs/${data._id}`,{
+        // headers:{
+        //   'Authorization':`Bearer ${}`
+        // }
+         withCredentials: true,
+        
+      });
       setData((prev) => prev.filter((item) => item._id !== data._id));
       
       toast.success("Deleted successfully");
@@ -26,6 +35,8 @@ const Blog = ({data}) => {
       toast.error(error.message);
     }
   };
+
+  // console.log(data.author)
   
   // const blog = JSON.parse(localStorage.getItem('blogs'));
   
@@ -74,12 +85,12 @@ const Blog = ({data}) => {
   {/* Footer */}
   <div className="mt-6">
     <p className="text-gray-600 text-xs sm:text-sm">
-      Written by <span className="font-semibold text-blue-600">{data.author}</span> — Tech & Web Development Blogger.
+      Written by <span className="font-semibold text-blue-600">{data.author?.username}</span> — Tech & Web Development Blogger.
     </p>
   </div>
-
-  <button onClick={() => filteredBlogs()} className='px-4 mt-2 py-2 bg-red-400 text-md text-white rounded-xl cursor-pointer hover:border hover:border-red-400 hover:bg-white hover:text-red-400'>Delete</button>
-        
+{user ? (     <button onClick={() => filteredBlogs()} className='px-4 mt-2 py-2 bg-red-400 text-md text-white rounded-xl cursor-pointer hover:border hover:border-red-400 hover:bg-white hover:text-red-400'>Delete</button>
+):""}
+         
 </div>
   
   ) 

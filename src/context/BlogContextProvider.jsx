@@ -18,16 +18,18 @@ const BlogContextProvider = ({children}) => {
    
       const fetchBlogs = async() =>{
           try {
-            const res = await instance.get('/blogs');
+            const res = await instance.get('/blogs/');
             // console.log(res.data)
-            setData(res.data)
+            setData(res.data.blogs)
+            // console.log(res.data)
           } catch (error) {
             console.log('Error:',error)
           }
       }
       fetchBlogs()
    
-  }, [data,setData]);
+  }, []);
+  // console.log(data)
   return (
     <BlogContext.Provider value={{toggler,setToggler,data,setData}}>
         {children}

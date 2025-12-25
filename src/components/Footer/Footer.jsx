@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+
+  const navigate = useNavigate();
   return (
     <div className='w-full '>
        <hr className='h-px bg-gray-700 w-full'/>
@@ -11,7 +14,7 @@ const Footer = () => {
         <div className='text-sm flex flex-col lg:w-1/5 gap-2 items-center text-center'>
           <h3 className='font-bold'>Sign up for BETA email updates</h3>
           <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim nostrum est sequi totam. Magnam, omnis!</p>
-          <button className='bg-[#2563EB] text-white rounded px-4 py-2 w-24 cursor-pointer'>Sign Up</button>
+          <button onClick={() => navigate('/signup')} className='bg-[#2563EB] text-white rounded px-4 py-2 w-24 cursor-pointer'>Sign Up</button>
         </div>
       </div>
 

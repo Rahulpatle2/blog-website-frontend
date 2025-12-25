@@ -11,6 +11,8 @@ import { ToastContainer } from "react-toastify";
 import BlogPost from "./components/Blog/BlogPost.jsx";
 import UpdateBlog from "./pages/UpdateBlog.jsx";
 import NoPageFound from "./pages/NoPageFound.jsx";
+import SignIn from "./components/SignIn.jsx";
+import SignUp from "./components/SignUp.jsx";
 
 
 
@@ -22,10 +24,13 @@ const router = createBrowserRouter([
       { index: true, element: <Newest /> },       // default page
       { path: "newest", element: <Newest /> },
       { path: "contact", element: <Contact /> },
-      {path:'createBlog', element:<CreateBlog/>},
-      {path:'updateBlog/:id',element:<UpdateBlog/>},
+      {path:'create-blog', element:<CreateBlog/>},
+      {path:'update-blog/:id',element:<UpdateBlog/>},
       {path:'blog/:id',element:<BlogPost/>},
+      {path:'signin',element:<SignIn/>},
+      {path:'signup',element:<SignUp/>},
       {path:'*',element:<NoPageFound/>}
+      
 
     ],
   },

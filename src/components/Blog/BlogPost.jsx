@@ -46,7 +46,7 @@ const BlogPost = () => {
         {/* Date + Author */}
         <div className="mt-3 flex flex-wrap gap-3 text-sm text-gray-500">
           <p>📅 Published on {finedData.date}</p>
-          <p>✍️ By <span className="font-semibold text-blue-600">{finedData.author}</span></p>
+          <p>✍️ By <span className="font-semibold text-blue-600">{finedData.author.username}</span></p>
         </div>
 
         <div className="my-6 border-t border-gray-200"></div>
@@ -61,7 +61,7 @@ const BlogPost = () => {
           <button
             onClick={(e) => {
               
-              navigate(`/updateBlog/${finedData._id}`);
+              navigate(`/update-blog/${finedData._id}`);
             }}
             className="px-4 py-2 rounded text-white bg-blue-500"
           >

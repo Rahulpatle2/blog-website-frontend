@@ -1,11 +1,19 @@
 import React, { useContext } from 'react'
 import Blog from '../components/Blog/Blog'
 import BlogContext from '../context/blogContext'
+import { useAuth } from '../context/AuthContextProvider'
 
 
 const Newest = () => {
   const {data} = useContext(BlogContext)
   // console.log(data)
+  // const {user} = useAuth()
+  // console.log(user);
+  // console.log(data);
+
+  // const cookie = cookieStore.get('token');
+
+  // console.log(cookie);
 
   return (
     <div className='w-full flex  justify-center min-h-[80vh]'>
