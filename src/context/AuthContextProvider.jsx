@@ -8,23 +8,32 @@ export const useAuth = () =>{
 }
 
 const AuthContextProvider = ({children}) => {
-   const [user,setUser] = useState(false);
+   const [user,setUser] = useState(null);
    
    useEffect(() =>{
      
-    const isLoggedIn = async() =>{
-      
-        const res = await instance.get('/users/me',
-          {
-            withCredentials:true
-          }
-        )
-  
-        console.log(res.data)
+    
+      const isLoggedIn = async() =>{
         
-        setUser(res.data)
+          try {
+            const res = await instance.get('/users/me',
+              {
+                withCredentials:true
+              }
+            )
       
-    }
+            console.log(res.data.user)
+            
+            setUser(res.data.user);
+          } catch (error) {
+             if(error){
+               console.log("Not logged in or Error:", error.response?.data?.message || error.message);
+             }
+             setUser(null)
+          }
+        
+      }
+    
     isLoggedIn()
    },[]);
 
