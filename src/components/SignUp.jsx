@@ -13,7 +13,7 @@ const SignUp = () => {
         e.preventDefault();
         try {
 
-            const res = await instance.post('/users/login', {
+            const res = await instance.post('/users/register', {
                 username: username,
                 email: email,
                 password: password
@@ -31,7 +31,7 @@ const SignUp = () => {
             <div className='w-full h-full object-fit absolute -z-1 overflow-hidden'>
                 <img className='w-full h-full object-cover' src={BackgroundImage} />
             </div>
-            <form onSubmit={signupUser} className='w-96  bg-amber-50 rounded-xl shadow-md p-5' action="" method="get">
+            <form onSubmit={() => signupUser} className='w-96  bg-amber-50 rounded-xl shadow-md p-5' action="" method="get">
                 <h1 className='text-2xl font-semibold text-center'>Please SignUp!</h1>
                 <div className='flex flex-col gap-1 py-2'>
                     <label className='font-semibold' htmlFor="username">Username</label>
