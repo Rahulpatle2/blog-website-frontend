@@ -37,7 +37,7 @@ const AuthContextProvider = ({children}) => {
     isLoggedIn()
    },[]);
 
-   console.log(user)
+  //  console.log(user)
    
   return (
     <AuthContext.Provider value={{user,setUser}}>

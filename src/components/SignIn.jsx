@@ -6,14 +6,14 @@ import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
     
-    const { username, setUsername, email, setEmail, password, setPassword } = useFormDetail();
+    const { email, setEmail, password, setPassword } = useFormDetail();
     const navigate = useNavigate()
     const LoginUser = async (e) => {
         e.preventDefault();
         try {
 
             const res = await instance.post('/users/login', {
-                username: username,
+                
                 email: email,
                 password: password
             });
@@ -45,11 +45,7 @@ const SignIn = () => {
             </div>
             <form onSubmit={LoginUser} className='w-96  bg-amber-50 rounded-xl shadow-md p-5' action="" method="get">
                 <h1 className='text-2xl font-semibold text-center'>Welcome Back!</h1>
-                <div className='flex flex-col gap-1 py-2'>
-                    <label className='font-semibold' htmlFor="username">Username</label>
-                    <input value={username} onChange={(e) => setUsername(e.target.value)} className='border rounded px-2 py-1 outline-0' id='username' name='username' type="text" placeholder='joe@123' />
-                </div>
-
+                
                 <div className='flex flex-col gap-2 py-2'>
                     <label className='font-semibold' htmlFor="email">Email</label>
                     <input value={email} onChange={(e) => setEmail(e.target.value)} className='border rounded px-2 py-1 outline-0' type="email" name="email" id="email" placeholder='joe@gmail.com' />
