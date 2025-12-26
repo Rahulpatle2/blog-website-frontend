@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
-import BlogContext from '../context/blogContext'
+import BlogContext from '../context/blogContext.js'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import instance from '../config/config'
+import instance from '../config/config.js'
 
 
 const CreateBlog = () => {

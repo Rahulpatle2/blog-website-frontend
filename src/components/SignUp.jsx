@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const SignUp = () => {
     const { username, setUsername, email, setEmail, password, setPassword } = useFormDetail();
     const navigate = useNavigate()
-    const LoginUser = async (e) => {
+    const signupUser = async (e) => {
         e.preventDefault();
         try {
 

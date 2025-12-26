@@ -14,7 +14,11 @@ const AuthContextProvider = ({children}) => {
      
     const isLoggedIn = async() =>{
       
-        const res = await instance.get('/users/me')
+        const res = await instance.get('/users/me',
+          {
+            withCredentials:true
+          }
+        )
   
         console.log(res.data)
         
