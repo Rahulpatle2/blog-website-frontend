@@ -5,7 +5,7 @@ const Footer = () => {
 
   const navigate = useNavigate();
   return (
-    <div className='w-full '>
+    <div className='w-full mt-56 '>
        <hr className='h-px bg-gray-700 w-full'/>
         <div className='flex flex-col items-center lg:items-start lg:flex-row gap-4 p-20'>
           <div>

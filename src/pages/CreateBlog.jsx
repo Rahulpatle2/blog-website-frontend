@@ -3,6 +3,7 @@ import BlogContext from '../context/blogContext.js'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import instance from '../config/config.js'
+import { motion } from 'motion/react'
 
 
 const CreateBlog = () => {
@@ -32,7 +33,7 @@ const CreateBlog = () => {
 
 
       setData((prev) => [...prev, res.data])
-      toast.success()
+      toast.success(res.data.message)
       navigate('/newest');
     } catch (error) {
       console.log('Error:', error.message)
@@ -43,7 +44,11 @@ const CreateBlog = () => {
 
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex flex-col gap-3 items-center justify-center p-6">
+    <motion.div
+    initial={{opacity:0, scale:1}} 
+    animate={{opacity:1}}
+    transition={{duration:0.3}}
+     className="min-h-screen bg-[#F8FAFC] flex flex-col gap-3 items-center justify-center p-6">
       <h1 className='text-3xl font-extrabold'>Create Blog</h1>
       <form onSubmit={submitHandler} className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6 space-y-4">
 
@@ -100,7 +105,7 @@ const CreateBlog = () => {
         <ToastContainer />
 
       </form>
-    </div>
+    </motion.div>
   )
 }
 

@@ -4,6 +4,7 @@ import { useFormDetail } from './custom/customHook.js';
 import instance from '../config/config.js';
 import { useNavigate } from 'react-router-dom';
 
+
 const SignIn = () => {
     
     const { email, setEmail, password, setPassword } = useFormDetail();
@@ -17,9 +18,9 @@ const SignIn = () => {
                 email: email,
                 password: password
             });
-
+            console.log(res.data);
             
-            window.location.href = "/";
+            navigate('/');
         } catch (error) {
             console.error(error);
         }
@@ -39,10 +40,8 @@ const SignIn = () => {
     
     
     return (
-        <div className='border w-screen h-screen relative flex items-center justify-center'>
-            <div className='w-full h-full object-fit absolute -z-1 overflow-hidden'>
-                <img className='w-full h-full object-cover' src={BackgroundImage} />
-            </div>
+        <div className=' w-screen h-screen relative flex items-center justify-center'>
+           
             <form onSubmit={LoginUser} className='w-96  bg-amber-50 rounded-xl shadow-md p-5' action="" method="get">
                 <h1 className='text-2xl font-semibold text-center'>Welcome Back!</h1>
                 
@@ -56,8 +55,9 @@ const SignIn = () => {
                     <input value={password}  onChange={(e) => setPassword(e.target.value)} className='border rounded px-2 py-1 outline-0' type="password" name="password" id="password" placeholder='****' />
                 </div>
 
-                <button className='text-center px-4 py-1.5 shadow-lg bg-[#2563EB] text-white font-semibold rounded-md my-4 cursor-pointer hover:text-[#2563EB] hover:bg-white hover:border-[#2563EB]'>SignIn</button>
-
+                <button type='submit' className='text-center px-4 py-1.5 shadow-lg bg-[#2563EB] text-white font-semibold rounded-md my-4 cursor-pointer hover:text-[#2563EB] hover:bg-white hover:border-[#2563EB]'>SignIn</button>
+                
+                 <div onClick={() => navigate('/signup')} className='text-blue-500 underline cursor-pointer'>New user? register here!</div>
             </form>
         </div>
     )
