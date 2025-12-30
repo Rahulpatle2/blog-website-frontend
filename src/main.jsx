@@ -27,13 +27,14 @@ const router = createBrowserRouter([
       {path:'create-blog', element:<CreateBlog/>},
       {path:'update-blog/:id',element:<UpdateBlog/>},
       {path:'blog/:id',element:<BlogPost/>},
-      {path:'signin',element:<SignIn/>},
-      {path:'signup',element:<SignUp/>},
       {path:'*',element:<NoPageFound/>}
       
 
     ],
   },
+  {path:'/signin',element:<SignIn/>},
+  {path:'/signup',element:<SignUp/>},
+
 ]);
 
 createRoot(document.getElementById("root")).render(
