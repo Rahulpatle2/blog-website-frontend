@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import BlogContext from './blogContext'
 import { useEffect } from 'react';
 import instance from '../config/config';

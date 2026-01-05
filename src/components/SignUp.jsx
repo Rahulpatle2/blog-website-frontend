@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import BackgroundImage from '../assets/form-background.png'
 import { useAuth } from '../context/AuthContextProvider'
 import { useFormDetail } from './custom/customHook.js';
 import instance from '../config/config.js'

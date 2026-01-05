@@ -1,18 +1,19 @@
-import { StrictMode, useContext } from "react";
+import { lazy} from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import Layout from "./Layout.jsx";
-import Newest from "./pages/Newest.jsx";
-import Contact from "./pages/Contact.jsx";
+const Newest = lazy(() => import('./pages/Newest.jsx'))
+const Contact = lazy(() => import("./pages/Contact.jsx"));
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import CreateBlog from "./pages/CreateBlog.jsx";
+const CreateBlog = lazy(() => import("./pages/CreateBlog.jsx")) ;
 import { ToastContainer } from "react-toastify";
-import BlogPost from "./components/Blog/BlogPost.jsx";
-import UpdateBlog from "./pages/UpdateBlog.jsx";
+const BlogPost = lazy(() => import("./components/Blog/BlogPost.jsx")) ;
+const UpdateBlog = lazy(() => import("./pages/UpdateBlog.jsx")) ;
 import NoPageFound from "./pages/NoPageFound.jsx";
-import SignIn from "./components/SignIn.jsx";
-import SignUp from "./components/SignUp.jsx";
+const SignIn = lazy(() => import("./components/SignIn.jsx")) ;
+const SignUp = lazy(() => import("./components/SignUp.jsx")) ;
+const Home = lazy(() => import("./pages/Home.jsx")) ;
+
 
 
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Newest /> },       // default page
+      { index: true, element: <Home/> },       // default page
       { path: "newest", element: <Newest /> },
       { path: "contact", element: <Contact /> },
       {path:'create-blog', element:<CreateBlog/>},

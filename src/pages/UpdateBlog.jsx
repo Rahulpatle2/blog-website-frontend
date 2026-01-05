@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import BlogContext from '../context/blogContext.js'
-import { nanoid } from 'nanoid'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom'
 import instance from '../config/config.js'
@@ -60,44 +59,44 @@ if(!blog){
   
   
   return (
-     <div className="min-h-screen bg-[#F8FAFC] flex flex-col gap-3 items-center justify-center p-6">
+     <div className="min-h-screen bg-black text-white flex flex-col gap-3 items-center justify-center p-6">
       <h1 className='text-3xl font-extrabold'>Update Blog</h1>
-      <form  onSubmit={handleSubmit(updateBlog)}  className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6 space-y-4">
+      <form  onSubmit={handleSubmit(updateBlog)}  className="w-full max-w-md bg-gray-900 shadow-lg rounded-2xl p-6 space-y-4">
 
         {/* Title */}
         <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Title</label>
+          <label className="block  font-semibold mb-1">Title</label>
           <input
             type="text"
             {...register('title',{required:true})}
             defaultValue={blog.title}
             placeholder="Enter title"
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
+            className="w-full border rounded-lg px-3 py-2   
             focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           />
         </div>
 
        
         <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Image URL</label>
+          <label className="block  font-semibold mb-1">Image URL</label>
           <input
             type="text"
             {...register('imageURL',{required:true})}
             defaultValue={blog.imageUrl}
             placeholder="Enter image URL"
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
+            className="w-full border rounded-lg px-3 py-2  ] 
             focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           />
         </div>
 
         {/* Details */}
         <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Details</label>
+          <label className="block  font-semibold mb-1">Details</label>
           <textarea
             placeholder="Enter details..."
             {...register('details',{required:true})}
             defaultValue={blog.details}
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
+            className="w-full border rounded-lg px-3 py-2  
             h-28 resize-none focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           ></textarea>
         </div>

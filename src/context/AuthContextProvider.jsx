@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AuthContext from './AuthContext';
-import Cookies from 'js-cookie';
 import instance from '../config/config';
 
 export const useAuth = () =>{
@@ -10,32 +9,39 @@ export const useAuth = () =>{
 const AuthContextProvider = ({children}) => {
    const [user,setUser] = useState(null);
    
-   useEffect(() =>{
-     
-    
-      const isLoggedIn = async() =>{
-        
-          try {
-            const res = await instance.get('/users/me',
-              {
-                withCredentials:true
-              }
-            )
+   useEffect(() => {
+  
+  let isMounted = true; 
+
+  const checkLoginStatus = async () => {
+    try {
+      const res = await instance.get('/users/me', {
+        withCredentials: true
+      });
+
       
-            console.log(res.data.user)
-            
-            setUser(res.data.user);
-          } catch (error) {
-             if(error){
-               console.log("Not logged in or Error:", error.response?.data?.message || error.message);
-             }
-             setUser(null)
-          }
-        
+      if (isMounted) {
+        setUser(res.data.user);
       }
-    
-    isLoggedIn()
-   },[]);
+      
+    } catch (error) {
+      
+      if (isMounted) {
+        if (error.response?.status !== 401) {
+           console.error("Unexpected error:", error);
+        }
+        setUser(null);
+      }
+    }
+  };
+
+  checkLoginStatus();
+
+ 
+  return () => {
+    isMounted = false;
+  };
+}, []);
 
   //  console.log(user)
    

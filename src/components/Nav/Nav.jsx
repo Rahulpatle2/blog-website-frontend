@@ -1,63 +1,53 @@
 import React, { useState } from 'react'
-import { Link,NavLink } from 'react-router-dom' 
+import {  NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContextProvider';
 import { AnimatePresence, motion } from 'motion/react';
 
 const Nav = () => {
     const navigate = useNavigate();
-    const {user} = useAuth()
-    const [toggle,setToggle] = useState(false);
-  return (
-    <nav className='flex flex-col items-center'>
-        <div className='lg:flex lg:py-3 justify-between items-center lg:w-[90%]'>
-            <div className='lg:mb-2'>
-                <span className='text-[#2563eb] lg:text-5xl  text-4xl font-extrabold'>BETA </span>
-                <span className='text-4xl lg:text-5xl text-gray-600'>Blog</span>
+    const { user } = useAuth()
+    const [toggle, setToggle] = useState(false);
+   
+    return (
+        <nav className='bg-black py-4 px-2 w-full relative lg:flex lg:justify-between lg:px-15 lg:items-center'>
+            <div className='flex items-center justify-between w-full lg:w-fit'>
+                <div>
+                    <span className='uppercase text-white text-4xl lg:text-5xl '>beta</span>
+                    <span className='uppercase text-white text-4xl lg:text-5xl font-bold'>blog</span>
+                </div>
+
+                <div className='lg:hidden' onClick={() => setToggle(!toggle)}>
+                    <i className="fa-solid fa-bars text-white text-3xl"></i>
+                </div>
+            </div>
+            <AnimatePresence >
+               {toggle  ?( <motion.div initial={{x:100}} animate={{x:0}} exit={{x:300}} transition={{duration:0.2}} className={`text-white  flex flex-col items-end pr-2 w-1/2 fixed z-20 bg-gray-900 right-0 top-0 h-screen `}>
+                <div className='py-4'>
+                    <i onClick={() => setToggle(!toggle)} className="fa-solid fa-xmark text-white text-3xl"></i>
+                </div>
+                <div className='w-full flex flex-col pl-10 gap-5  '>
+                    <NavLink to={'/'}  className={({isActive}) => isActive ? "text-xl  transition-all duration-200 ":""}>Home</NavLink>
+                    <NavLink to={'newest'} className={({isActive}) => isActive ? "text-xl transition-all duration-200":""}>Newest</NavLink>
+                    <NavLink to={'contact'} className={({isActive}) => isActive ? "text-xl transition-all duration-200":""}>Contact Us</NavLink>
+                    {user ? (<NavLink to={'create-blog'} className={({isActive}) => isActive ? "text-xl transition-all duration-200":""}>Create Blog</NavLink>):""}
+                </div>
+            </motion.div>): null}
+            </AnimatePresence>
+            
+            <div className='hidden lg:flex items-center text-white  gap-5'>
+                    <NavLink to={'/'} className={({isActive}) => isActive ? "text-lg text-blue-400":"text-lg"}>Home</NavLink>
+                    <NavLink to={'newest'} className={({isActive}) => isActive ? "text-lg text-blue-400":"text-lg"}>Newest</NavLink>
+                    <NavLink to={'contact'} className={({isActive}) => isActive ? "text-lg text-blue-400":"text-lg"}>Contact Us</NavLink>
+                   {user ? ( <NavLink to={'create-blog'} className={({isActive}) => isActive ? "text-lg text-blue-400":"text-lg"}>Create Blog</NavLink>):""}
+            </div>
+            
+            <div className='hidden lg:block'>
+                <button onClick={() => navigate('/signin')} className='outline-1 outline-white px-4 py-1.5 rounded-md text-white bg-black hover:bg-white hover:text-black hover:outline-0 cursor-pointer'>SignIn</button>
             </div>
 
-            <button onClick={() => navigate('/signin')} className='bg-[#2563eb] hidden lg:block px-2.5 py-1 rounded text-white cursor-pointer hover:bg-white hover:text-[#2563eb] hover:outline-1  hover:outline-[#2563eb]'>SignIn</button>
-            
-        </div>
-        <div className='h-px my-2 w-full bg-gray-500'></div>
-       
-        <div className=' lg:hidden w-full flex flex-col items-center'>
-            <div onClick={() => setToggle(!toggle)} className='shadow-md w-[90%] relative py-2 px-2 rounded-lg '>Menu <span className='absolute right-2'>{toggle ? (<i className="fa-solid fa-angle-down"></i>):(<i className="fa-solid fa-angle-right"></i>)}</span></div>
-           
-            <AnimatePresence>
-            <motion.div 
-            initial={{ y: "-100%" }}    
-            animate={{ y: 0 }}          
-            exit={{ y: "-100%" }}       
-            transition={{ duration:1 }} // Bouncy physics
-            
-            className={`flex flex-col shadow-lg w-[90%] mt-2 gap-2 px-2 py-2 top-25 bg-gray-100 ${toggle ? 'absolute':'hidden'}`}>
-                <NavLink  to={'/'} className={({isActive}) => isActive ? 'bg-blue-500 text-white px-1':""}>Newest</NavLink>
-                <NavLink to={'/contact'} className={({isActive}) => isActive ? 'bg-blue-500 text-white px-1':""} >Contact us</NavLink>
-                {user && <NavLink to={'/create-blog'} className={({isActive}) => isActive ? 'bg-blue-500 text-white px-1':""} >Create Blog</NavLink>}
-            </motion.div>
-            </AnimatePresence>
-        </div>
-        <ul className='hidden lg:flex w-[90%] gap-6'>
-            <li className='text-[#1E293B]'>
-                <NavLink className={({isActive}) => isActive?"text-[#2563eb]":""} to={'/newest'}>
-                    Newest
-                </NavLink>
-            </li>
-           
-            <li className='text-[#1E293B]'>
-                <NavLink className={({isActive}) => isActive?"text-[#2563eb]":""} to={'/contact'}>
-                    Contact
-                </NavLink>
-            </li>
-            {user && <li className='text-[#1E293B]'>
-                <NavLink className={({isActive}) => isActive?"text-[#2563eb]":""} to={'/create-blog'}>
-                    Create Blog
-                </NavLink>
-            </li>}
-        </ul>
-    </nav>
-  )
+        </nav>
+    )
 }
 
 export default Nav

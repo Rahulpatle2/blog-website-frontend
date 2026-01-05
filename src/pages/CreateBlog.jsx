@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import BlogContext from '../context/blogContext.js'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
@@ -9,13 +9,9 @@ import { motion } from 'motion/react'
 const CreateBlog = () => {
   const navigate = useNavigate()
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [imageUrl, setImageUrl] = useState('');
   const [details, setDetails] = useState('');
-  const [author, setAuthor] = useState('');
-
-
-  const { data, setData } = useContext(BlogContext);
+  const { setData } = useContext(BlogContext);
 
 
 
@@ -48,19 +44,19 @@ const CreateBlog = () => {
     initial={{opacity:0, scale:1}} 
     animate={{opacity:1}}
     transition={{duration:0.3}}
-     className="min-h-screen bg-[#F8FAFC] flex flex-col gap-3 items-center justify-center p-6">
-      <h1 className='text-3xl font-extrabold'>Create Blog</h1>
-      <form onSubmit={submitHandler} className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6 space-y-4">
+     className="min-h-screen bg-black text-white flex flex-col gap-3 items-center justify-center p-6">
+      <h1 className='text-3xl font-extrabold mb-5'>Create Blog</h1>
+      <form onSubmit={submitHandler} className="w-full max-w-md bg-gray-800 shadow-lg rounded-2xl p-6 space-y-4">
 
 
         <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Title</label>
+          <label className="block  font-semibold mb-1">Title</label>
           <input
             type="text"
 
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Enter title"
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
+            className="w-full border rounded-lg px-3 py-2  placeholder-[#94A3B8] 
             focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           />
         </div>
@@ -69,25 +65,25 @@ const CreateBlog = () => {
        
 
         <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Image URL</label>
+          <label className="block  font-semibold mb-1">Image URL</label>
           <input
             type="text"
 
             onChange={(e) => setImageUrl(e.target.value)}
             placeholder="Enter image URL"
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
+            className="w-full border rounded-lg px-3 py-2  placeholder-[#94A3B8] 
             focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           />
         </div>
 
 
         <div>
-          <label className="block text-[#0F172A] font-semibold mb-1">Details</label>
+          <label className="block  font-semibold mb-1">Details</label>
           <textarea
             placeholder="Enter details..."
 
             onChange={(e) => setDetails(e.target.value)}
-            className="w-full border rounded-lg px-3 py-2 text-[#334155] placeholder-[#94A3B8] 
+            className="w-full border rounded-lg px-3 py-2 placeholder-[#94A3B8] 
             h-28 resize-none focus:outline-none focus:ring-2 focus:ring-[#2563EB]"
           ></textarea>
         </div>
